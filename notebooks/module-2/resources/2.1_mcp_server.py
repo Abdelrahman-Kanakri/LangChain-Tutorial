@@ -15,7 +15,7 @@ tavily_client = TavilyClient()
 
 # Tool for searching the web
 @mcp.tool()
-def search_web(query: str) -> Dict[str, Any]:
+async def search_web(query: str) -> Dict[str, Any]:
     """Search the web for information"""
 
     results = tavily_client.search(query)
@@ -25,7 +25,7 @@ def search_web(query: str) -> Dict[str, Any]:
 
 # Resources - provide access to langchain-ai repo files
 @mcp.resource("github://langchain-ai/langchain-mcp-adapters/blob/main/README.md")
-def github_file():
+async def github_file():
     """
     Resource for accessing langchain-ai/langchain-mcp-adapters/README.md file
 
@@ -40,7 +40,7 @@ def github_file():
 
 # Prompt template
 @mcp.prompt()
-def prompt():
+async def prompt():
     """Analyze data from a langchain-ai repo file with comprehensive insights"""
     return """
     You are a helpful assistant that answers user questions about LangChain, LangGraph and LangSmith.
